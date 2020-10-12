@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/my_proJ.iml" filepath="$PROJECT_DIR$/.idea/my_proJ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../oldPtoJ/.idea/oldPtoJ.iml" filepath="$PROJECT_DIR$/../../oldPtoJ/.idea/oldPtoJ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pass_manager/.idea/pass_manager.iml" filepath="$PROJECT_DIR$/../pass_manager/.idea/pass_manager.iml" />
+    </modules>
+  </component>
+</project>

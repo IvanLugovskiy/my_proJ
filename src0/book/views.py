@@ -1,6 +1,9 @@
 from book.models import Book
+from django.shortcuts import render, get_object_or_404
+from book.forms import Book, BookForm
 
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
 from faker import Faker
 
@@ -14,10 +17,30 @@ def book(request):
     return HttpResponse(results)
 
 
+
 def create_book(request):
-    fake = Faker()
-    tmp = Book.objects.create(
-        author=fake.name(),
-        title=fake.word(),
-    )
-    return HttpResponse(f'ID: {tmp.id}, author: {tmp.author}, title: {tmp.title}')
+    global form
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        is_valid = form.is_valid()
+        if is_valid:
+            form.save()
+            return HttpResponseRedirect('/books/list/')
+    elif request.method == 'GET':
+        form = BookForm()
+    context = {'book_form': form}
+    return render(request, 'create_book.html', context=context)
+
+
+def update_book(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    if request.method == 'POST':
+        form = BookForm(request.POST, instance=book)
+        is_valid = form.is_valid()
+        if is_valid:
+            form.save()
+            return HttpResponseRedirect('/books/list/')
+    elif request.method == 'GET':
+        form = BookForm(instance=book)
+        context = {'book_form': form}
+        return render(request, 'create_book.html', context=context)

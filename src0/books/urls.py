@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('books/list/', bk.book),
     path('books/create/', bk.create_book),
+    path('updbooks/<int:pk>/', bk.update_book),
 
 ]
